@@ -1,16 +1,16 @@
-// ===== small utilities =====
+
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 const fmt = n => `$${n.toFixed(2)}`;
 const pic = (seed, w = 560, h = 340) => `https://picsum.photos/seed/${encodeURIComponent(seed)}/${w}/${h}`;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // mount sticky header if available
+  
   if (typeof buildHeader === 'function') buildHeader({ brandLink: 'index.html' });
 
-  // ===== data: 14 builds (PCPP-style buckets) =====
+  
   const builds = [
-    // Streaming (8)
+    
     {
       id: 'great-amd', section: 'streaming', title: 'Great AMD Gaming Build', price: 1061.82, tier: 'Mid 1080p/1440p',
       desc: 'Balanced AMD build for 1080p high & 1440p medium-high. Quiet, efficient, stream-ready.',
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
 
-    // Gaming (6)
+    
     {
       id: 'entry-amd', section: 'gaming', title: 'Entry Level AMD Gaming Build', price: 681.40, tier: 'Entry 1080p',
       desc: 'Budget AMD rig focused on esports + lighter AAA at 1080p.',
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
-  // ===== render cards =====
+  
   const makeCard = b => `
     <article class="card build" data-id="${b.id}" tabindex="0" aria-label="${b.title}">
       <img src="${pic(b.id)}" alt="${b.title}">
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#grid-streaming').innerHTML = builds.filter(b => b.section === 'streaming').map(makeCard).join('');
   $('#grid-gaming').innerHTML = builds.filter(b => b.section === 'gaming').map(makeCard).join('');
 
-  // ===== dialog hookup =====
+
   const dlg = $('#guideDialog');
   const dlgTitle = $('#dlg-title');
   const dlgHero = $('#dlg-hero');

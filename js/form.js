@@ -1,6 +1,4 @@
-// form.js (type="module")
 
-// ------------- Firebase imports -------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import {
     getDatabase,
@@ -14,7 +12,7 @@ import {
     signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
 
-// ------------- Firebase config -------------
+
 const firebaseConfig = {
     apiKey: "AIzaSyAbhrm5M-ObzigDzg1wPal8nm8eIPAyLmY",
     authDomain: "skibidipc-d428d.firebaseapp.com",
@@ -26,12 +24,12 @@ const firebaseConfig = {
     measurementId: "G-4YK6WG0HSJ"
 };
 
-// ------------- Init -------------
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-// ------------- DOM refs (present on either page) -------------
+
 const usernameLoginEl = document.getElementById("username_input_login");
 const passwordLoginEl = document.getElementById("password_input_login");
 const usernameRegisterEl = document.getElementById("username_input_register");
@@ -59,11 +57,11 @@ function disable(el, on) {
 }
 
 function redirectHome() {
-    // replace so back button doesn’t return to auth form
+    
     location.replace("index.html");
 }
 
-// ------------- Actions -------------
+
 async function handleRegister() {
     const email = (usernameRegisterEl?.value || "").trim();
     const password = passwordRegisterEl?.value || "";
@@ -79,7 +77,7 @@ async function handleRegister() {
         const cred = await createUserWithEmailAndPassword(auth, email, password);
         const user = cred.user;
 
-        // store basic profile; (Note: storing raw password is not recommended)
+        
         await set(ref(database, "user/" + user.uid), {
             id: user.uid,
             username: email,
@@ -124,11 +122,11 @@ async function handleLogin() {
     }
 }
 
-// ------------- Wire up (only where elements exist) -------------
+
 registerBtn?.addEventListener("click", handleRegister);
 loginBtn?.addEventListener("click", handleLogin);
 
-// Submit on Enter in inputs
+
 [usernameLoginEl, passwordLoginEl].forEach(el => {
     el?.addEventListener("keydown", e => { if (e.key === "Enter") handleLogin(); });
 });

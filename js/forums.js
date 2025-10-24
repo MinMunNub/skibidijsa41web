@@ -1,4 +1,4 @@
-// js/forums.js  (no Firebase; localStorage only)
+
 
 const SECTIONS = [
     {
@@ -66,7 +66,7 @@ const savePostBtn = document.getElementById("savePostBtn");
 const deletePostBtn = document.getElementById("deletePostBtn");
 const editingId = document.getElementById("editingId");
 
-/* storage */
+
 const LS_KEY = "spc_forums_v1";
 const LIKE_KEY = "spc_likes_v1";
 const store = () => { try { return JSON.parse(localStorage.getItem(LS_KEY) || "{}"); } catch { return {}; } };
@@ -82,7 +82,7 @@ function timeAgo(t) { if (!t) return "just now"; const s = Math.floor((Date.now(
 function escapeHTML(str) { return str.replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c])); }
 function fileToDataURL(file) { return new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(file); }); }
 
-/* init UI */
+
 postTopic.innerHTML = `<option value="" disabled selected>Select a forum…</option>` + ALL_TITLES.map(t => `<option>${t}</option>`).join("");
 
 function renderTables(filter = "") {
@@ -118,7 +118,7 @@ forumSectionsEl.addEventListener("click", (e) => {
     openTopic(tr.getAttribute("data-forum"));
 });
 
-/* topic modal */
+
 function openTopic(title) {
     topicTitle.textContent = title;
     topicSubtitle.textContent = "Latest posts";
@@ -139,7 +139,7 @@ function openTopic(title) {
 }
 topicModal.addEventListener("click", (e) => { if (e.target.matches(".overlay,[data-close]")) topicModal.hidden = true; });
 
-/* composer modal */
+
 document.getElementById("makePostBtn").addEventListener("click", () => openComposer());
 composerModal.addEventListener("click", (e) => { if (e.target.matches(".overlay,[data-close]")) composerModal.hidden = true; });
 removeImgBtn.addEventListener("click", () => { imagePreview.hidden = true; imagePreview.querySelector("img").src = ""; delete imagePreview.dataset.keep; });
@@ -170,7 +170,7 @@ function openComposer(existing) {
     }
 }
 
-/* submit / update / delete — localStorage */
+
 document.getElementById("postForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const topic = postTopic.value.trim();
@@ -222,7 +222,7 @@ deletePostBtn.addEventListener("click", () => {
     composerModal.hidden = true;
 });
 
-/* post card */
+
 function postCard(topic, p, isSeed = false) {
     const el = document.createElement("article");
     el.className = "post-card";

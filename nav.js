@@ -1,10 +1,10 @@
-// nav.js — reusable header + theme + auth UI
+
 (function () {
   const THEME_KEY = "skibidi_theme";
   const SESSION_KEY = "skibidi_current_user";
 
   function headerTemplate(brandLink = "index.html") {
-    // fixed nested <a>: use ONE link for the brand
+    
     return `
 <header>
   <div class="container navbar">
@@ -20,7 +20,6 @@
         <li><a href="guide.html">Guides</a></li>
         <li><a href="benchmark.html">Benchmark</a></li>
         <li><a href="Forums.html">Forums</a></li>
-        <li><a href="accessories.html">Accessories</a></li>
       </ul>
     </nav>
 
@@ -68,7 +67,7 @@
     }
 
 
-    // Theme boot/persist
+    
     const saved = localStorage.getItem(THEME_KEY) || "dark";
     document.body.classList.toggle("light", saved === "light");
     const toggle = document.getElementById("modeToggle");
@@ -129,16 +128,16 @@
         logout.addEventListener("click", async () => {
           const SESSION_KEY = "skibidi_current_user";
 
-          // Try to sign out of Firebase (if Auth is on this page)
+         
           try {
             const { getAuth, signOut } =
               await import("https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js");
             await signOut(getAuth());
           } catch (_) {
-            // Firebase not present or not initialized on this page — ignore
+           
           }
 
-          // Clear header session & refresh UI
+       
           localStorage.removeItem(SESSION_KEY);
           this.init();
           location.href = "index.html";
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildHeader({ brandLink: brand });
 });
 
-// Keep header session in sync with Firebase auth (runs on every page with nav.js)
+
 (async () => {
   try {
     const { getAuth, onAuthStateChanged } = await import("https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js");
@@ -173,6 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.HeaderAuth && typeof HeaderAuth.refresh === "function") HeaderAuth.refresh();
     });
   } catch (_) {
-    // Firebase not present on this page — nothing to sync, safe to ignore
+    
   }
 })();

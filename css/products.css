@@ -813,3 +813,33 @@ html:has(dialog[open]) { overflow: hidden; }
     display: none;
 }
 
+/* ===== Global text = white by default; flips to dark in light mode ===== */
+
+/* Default text color */
+:root { --text-dark: #0b1225; }          /* reuseable dark text token */
+:where(html, body) { color: #fff; }      /* make all text white by default */
+:where(body) { --text: #fff; }           /* keep your var in sync */
+
+/* Make almost everything inherit the current color (kills stray hard-coded colors) */
+:where(body) :is(
+  h1,h2,h3,h4,h5,h6,p,a,span,small,em,strong,li,dt,dd,th,td,blockquote,figcaption,
+  label,legend,summary,details,code,pre,
+  .muted,.small,.p-specs,.p-brand,.p-cat,.range-row label,.range-val,
+  .brand-item,.stars,.badge,.icon-btn,.mini,.card-btn
+) { color: inherit !important; }
+
+/* Inputs & placeholders follow the same text color */
+:where(input, select, textarea, button) { color: inherit !important; }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,.9); }
+body.light input::placeholder,
+body.light textarea::placeholder { color: rgba(11,18,37,.6); }
+
+/* Light mode: flip body text to dark; everything inherits automatically */
+body.light { color: var(--text-dark); --text: var(--text-dark); }
+
+/* Keep special cases that intentionally use dark-on-gradient readable */
+.btn.primary { color: #031221; }              /* already dark on bright gradient */
+.main-nav a:hover { color: #031221; }         /* readable on gradient hover */
+
+/* (Optional) If you still want “muted” tone, only vary opacity — stays white/dark */
+.muted, .small { opacity: .85; }              /* white by default, dark in light */
