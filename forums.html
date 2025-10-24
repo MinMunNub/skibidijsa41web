@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SkibidiPC — Forums</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="css/forums.css" />
+</head>
+
+<body>
+    <div id="site-header"></div>
+
+    <div class="container forums" role="main" aria-label="Forums">
+        <h1 class="page-title">Forums</h1>
+
+        <div class="search-wrap">
+            <input id="forumSearch" type="text" placeholder="Search forums..." />
+            <button id="searchBtn" aria-label="Search">🔍</button>
+        </div>
+
+        <div class="actions">
+            <button id="makePostBtn" class="btn-primary">➕ Make a Post</button>
+        </div>
+
+        <section id="forumSections"></section>
+    </div>
+
+    <div id="topicModal" class="overlay" hidden>
+        <div class="modal">
+            <button class="modal-close" data-close>✕</button>
+            <div class="modal-head">
+                <h2 id="topicTitle">Topic</h2>
+                <p class="muted" id="topicSubtitle"></p>
+            </div>
+            <div id="postsList" class="posts"></div>
+        </div>
+    </div>
+
+    <div id="composerModal" class="overlay" hidden>
+        <div class="modal">
+            <button class="modal-close" data-close>✕</button>
+            <h2 id="composerTitle">Create Post</h2>
+            <form id="postForm" autocomplete="off">
+                <label>Post to
+                    <select id="postTopic" required></select>
+                </label>
+                <label>Caption
+                    <textarea id="postText" rows="4" placeholder="Write something..." required></textarea>
+                </label>
+                <label class="file-label">
+                    <input id="postImage" type="file" accept="image/*" />
+                    <span>Attach image (optional)</span>
+                </label>
+                <div id="imagePreview" class="img-preview" hidden>
+                    <img alt="preview" />
+                    <button type="button" id="removeImg" class="btn-text">Remove image</button>
+                </div>
+                <div class="composer-actions">
+                    <button type="submit" class="btn-primary" id="savePostBtn">Post</button>
+                    <button type="button" class="btn-danger" id="deletePostBtn" hidden>Delete</button>
+                </div>
+                <input type="hidden" id="editingId" />
+            </form>
+        </div>
+    </div>
+
+    <script src="nav.js" defer></script>
+    <script type="module" src="js/forums.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof buildHeader === "function")
+                buildHeader({ brandLink: 'index.html', active: 'Forums' });
+        });
+    </script>
+</body>
+
+</html>

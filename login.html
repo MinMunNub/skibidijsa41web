@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In — SkibidiPC</title>
+
+    <!-- Your main site styles + dedicated auth styles -->
+    <link rel="stylesheet" href="css/guide.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+    <!-- Navbar mount -->
+    <div id="site-header"></div>
+
+    <main class="container" style="padding:40px 0;">
+        <section class="card" style="max-width:520px;margin:0 auto;">
+            <header class="section-head" style="margin-bottom:12px;">
+                <h1 style="font-size:1.6rem;">Log In</h1>
+                <p class="muted">Welcome back. Enter your email and password.</p>
+            </header>
+
+            <!-- LOGIN form — IDs must match your form.js -->
+            <form style="display:grid;gap:12px;" onsubmit="return false;">
+                <label style="display:grid;gap:6px;">
+                    <span class="muted">Email</span>
+                    <input id="username_input_login" type="email" autocomplete="email" required
+                        placeholder="you@example.com"
+                        style="padding:12px;border-radius:10px;border:1px solid var(--card-border);background:transparent;color:var(--text);">
+                </label>
+
+                <label style="display:grid;gap:6px;">
+                    <span class="muted">Password</span>
+                    <input id="password_input_login" type="password" autocomplete="current-password" required
+                        placeholder="Your password"
+                        style="padding:12px;border-radius:10px;border:1px solid var(--card-border);background:transparent;color:var(--text);">
+                </label>
+
+                <button id="login_btn" class="btn primary" type="button">Log In</button>
+
+                <!-- Demo socials -->
+                <div class="muted" style="text-align:center;margin:8px 0;">or continue with</div>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" class="btn ghost" title="Continue with email"
+                        style="display:inline-flex;align-items:center;gap:8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 6h16v12H4z" stroke="currentColor" />
+                            <path d="m4 6 8 6 8-6" stroke="currentColor" />
+                        </svg>
+                        Mail
+                    </button>
+                    <button type="button" class="btn ghost" title="Continue with Facebook"
+                        style="display:inline-flex;align-items:center;gap:8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.7c0-2.2 1.3-3.4 3.3-3.4.96 0 1.97.17 1.97.17v2.17h-1.11c-1.1 0-1.45.68-1.45 1.38V12h2.47l-.39 2.9h-2.08v7A10 10 0 0 0 22 12z" />
+                        </svg>
+                        Facebook
+                    </button>
+                </div>
+
+                <p class="muted" style="margin-top:6px;text-align:center;">
+                    New here? <a href="signup.html">Create an account</a>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="nav.js" defer></script>
+    <script type="module" src="js/form.js"></script>
+
+
+</body>
+
+</html>

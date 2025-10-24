@@ -1,0 +1,83 @@
+<!-- builder.html -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PC Builder</title>
+    <link rel="stylesheet" href="css/builder.css" />
+    <link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+    <div id="site-header"></div>
+
+    <main class="container">
+        <h1>Choose Your Parts</h1>
+
+        <section class="grid">
+            <div class="card">
+                <h3>CPU</h3><select id="cpu"></select>
+            </div>
+            <div class="card">
+                <h3>CPU Cooler</h3><select id="cooler"></select>
+            </div>
+            <div class="card">
+                <h3>Motherboard</h3><select id="mobo"></select>
+            </div>
+            <div class="card">
+                <h3>Memory</h3><select id="ram"></select>
+            </div>
+            <div class="card">
+                <h3>Storage</h3><select id="storage"></select>
+            </div>
+            <div class="card">
+                <h3>GPU</h3><select id="gpu"></select>
+            </div>
+            <div class="card">
+                <h3>Power Supply</h3><select id="psu"></select>
+            </div>
+            <div class="card">
+                <h3>Case</h3><select id="case"></select>
+            </div>
+            <div class="card">
+                <h3>Monitor</h3><select id="monitor"></select>
+            </div>
+        </section>
+
+        <section class="two">
+            <div class="card">
+                <h3>Compatibility</h3>
+                <ul id="compat" class="list"></ul>
+            </div>
+            <div class="card">
+                <h3>Summary</h3>
+                <div class="summary">
+                    <div><span>Total Price</span><strong id="price">$0.00</strong></div>
+                    <div><span>Estimated Wattage</span><strong id="watts">0W</strong></div>
+                    <div><span>Recommended PSU</span><strong id="psuRec">—</strong></div>
+                    <div><span>Bottleneck</span><strong id="bneck">—</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Estimated FPS (1080p)</h3>
+            <div id="fps" class="fps"></div>
+        </section>
+
+        <div class="actions" style="margin:20px 0">
+            <button id="shareBtn" class="btn primary">Share Build</button>
+            <a id="shareLink" class="muted"></a>
+        </div>
+
+        <footer class="muted small space">© 2025 SkibidiPC</footer>
+    </main>
+
+    <script type="module" src="js/builder.js"></script>
+    <script src="nav.js"></script>
+    <script>buildHeader({ brandLink: "index.html" });</script>
+</body>
+
+</html>

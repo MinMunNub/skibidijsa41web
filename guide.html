@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Guides</title>
+
+
+    <link rel="stylesheet" href="css/guide.css" />
+</head>
+
+<body>
+
+    <div id="site-header"></div>
+
+    <br>
+    <main class="container">
+        <header class="section-head">
+            <h1 class="page-title">Build Guides</h1>
+            <p class="muted">Desktop / Gaming · Streaming · 1080p · 1440p · 4K</p>
+        </header>
+
+
+        <section class="section">
+            <div class="section-head">
+                <h2>Desktop / Gaming / Streaming</h2>
+            </div>
+            <div id="grid-streaming" class="grid guides"></div>
+        </section>
+
+
+        <section class="section alt">
+            <div class="section-head">
+                <h2>Desktop / Gaming</h2>
+            </div>
+            <div id="grid-gaming" class="grid guides"></div>
+        </section>
+    </main>
+
+
+    <!-- POPUP -->
+    <dialog id="guideDialog" class="dlg">
+        
+        <div class="dlg-head">
+            <span style="font-weight:800;letter-spacing:.08em;color:var(--muted);font-size:.8rem;">GUIDE</span>
+            <h3 id="dlg-title" style="margin:0;font-size:1.1rem;font-weight:800;flex:1;"></h3>
+            <form method="dialog">
+                <button value="close" aria-label="Close"
+                    style="background:transparent;border:none;color:var(--text);font-size:22px;cursor:pointer;">×</button>
+            </form>
+        </div>
+
+        
+        <img id="dlg-hero" class="dlg-hero" src="" alt="Guide preview" style="display:none" />
+
+        
+        <div class="dlg-body">
+            <p id="dlg-desc" class="muted" style="margin:0;"></p>
+
+            <div style="display:grid;gap:16px;grid-template-columns:1.2fr .8fr;">
+                <div>
+                    <h4 style="margin-bottom:8px;">Components</h4>
+                    <ul id="dlg-parts" style="list-style:none;display:grid;gap:8px;margin:0;padding:0;"></ul>
+                </div>
+
+                <aside style="display:grid;gap:10px;">
+                    <div
+                        style="display:flex;justify-content:space-between;border:1px solid var(--card-border);border-radius:10px;padding:10px 12px;">
+                        <span class="muted">Estimated Price</span>
+                        <strong id="dlg-price"></strong>
+                    </div>
+                    <div
+                        style="display:flex;justify-content:space-between;border:1px solid var(--card-border);border-radius:10px;padding:10px 12px;">
+                        <span class="muted">Tier</span>
+                        <span id="dlg-tier"></span>
+                    </div>
+                    <div
+                        style="display:flex;flex-direction:column;gap:6px;border:1px solid var(--card-border);border-radius:10px;padding:10px 12px;">
+                        <span class="muted">Notes</span>
+                        <span id="dlg-notes" class="muted"></span>
+                    </div>
+                </aside>
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;">
+                <form method="dialog">
+                    <button class="btn ghost" value="close">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+
+
+    <script src="nav.js" defer></script>
+    <script src="js/guide.js" defer></script>
+</body>
+
+</html>

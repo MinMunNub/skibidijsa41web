@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+
+    <div id="site-header"></div>
+
+    <div class="pf-wrap">
+        <div class="pf-card pf-stack">
+            <div class="pf-head">
+                <div class="pf-avatar" id="uAvatar">US</div>
+                <div class="pf-col">
+                    <h1 id="uNameTitle">user@email.com</h1>
+                    <p id="uEmailUnder" class="pf-muted">user@email.com</p>
+                </div>
+            </div>
+            <div class="pf-stack">
+                <label>Name</label>
+                <input id="nameInput" type="text" />
+                <label>Phone</label>
+                <input id="phoneInput" type="tel" placeholder="+84 ..." />
+                <button id="saveProfileBtn" class="pf-btn">Save</button>
+            </div>
+        </div>
+
+        <div class="pf-card pf-stack">
+            <h2>Your PC</h2>
+            <input id="pcFile" type="file" accept="image/*" />
+            <img id="pcPreview" class="pf-img" alt="preview" />
+            <textarea id="pcSpecs" placeholder="CPU, GPU, RAM, Storage, PSU, Case"></textarea>
+            <button id="uploadPcBtn" class="pf-btn">Upload PC</button>
+            <p id="pcMsg" class="pf-muted"></p>
+        </div>
+
+        <div class="pf-card pf-stack">
+            <h2>Your Posts</h2>
+            <div id="pcPosts" class="pf-posts"></div>
+        </div>
+    </div>
+
+    <script src="nav.js" defer></script>
+    <script src="js/profile.js" defer type="module"></script>
+</body>
+
+</html>

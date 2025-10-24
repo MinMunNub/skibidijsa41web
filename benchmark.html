@@ -1,0 +1,159 @@
+<!-- benchmark.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benchmark</title>
+    <link rel="stylesheet" href="css/benchmark.css" />
+    <link rel="stylesheet" href="nav.css" />
+</head>
+
+<body>
+    <div id="site-header"></div>
+
+    <header class="hero">
+        <div class="container hero-inner">
+            <div class="badge">⚡ Performance Benchmark Tool</div>
+            <h1>Calculate Your Gaming <span class="grad">Input</span> <span class="grad2">Lag</span></h1>
+            <p>Benchmark your complete gaming setup. Combine keyboard polling rate, mouse Hz, monitor refresh rate, and
+                network latency to get your total system responsiveness score.</p>
+            <div class="hero-cta">
+                <a href="#config" class="btn primary">Get Started →</a>
+                <a href="#" class="btn ghost">Learn More</a>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="big">1000+</div>
+                    <div class="sub">Peripherals</div>
+                </div>
+                <div class="metric">
+                    <div class="big">50+</div>
+                    <div class="sub">Locations</div>
+                </div>
+                <div class="metric">
+                    <div class="big">0.1ms</div>
+                    <div class="sub">Precision</div>
+                </div>
+            </div>
+            <img class="hero-bg" src="https://picsum.photos/seed/latencyhero/1600/700" alt="">
+        </div>
+    </header>
+
+    <section id="config" class="config">
+        <div class="container">
+            <h2>Configure Your Setup</h2>
+            <div class="grid">
+                <div class="card pick">
+                    <div class="card-head"><span>🧮</span><b>Gaming Keyboard</b></div>
+                    <select id="keyboardSelect"></select>
+                    <div class="kv"><span>Polling Rate</span><b id="kbHz">—</b></div>
+                    <div class="kv"><span>Switch Type</span><b id="kbSwitch">—</b></div>
+                </div>
+
+                <div class="card pick">
+                    <div class="card-head"><span>🖱️</span><b>Gaming Mouse</b></div>
+                    <select id="mouseSelect"></select>
+                    <div class="kv"><span>Polling Rate</span><b id="msHz">—</b></div>
+                    <div class="kv"><span>DPI</span><b id="msDpi">—</b></div>
+                </div>
+
+                <div class="card pick">
+                    <div class="card-head"><span>🖥️</span><b>Gaming Monitor</b></div>
+                    <select id="monitorSelect"></select>
+                    <div class="kv"><span>Refresh Rate</span><b id="mnHz">—</b></div>
+                    <div class="kv"><span>Response Time</span><b id="mnRt">—</b></div>
+                </div>
+
+                <div class="card pick">
+                    <div class="card-head"><span>📶</span><b>Router</b></div>
+                    <select id="routerSelect"></select>
+                    <div class="kv"><span>Latency Add</span><b id="rtAdd">—</b></div>
+                    <div class="kv"><span>Wireless</span><b id="rtWifi">—</b></div>
+                </div>
+
+                <div class="card pick">
+                    <div class="card-head"><span>📍</span><b>Your Location</b></div>
+                    <input id="locationInput" placeholder="City, Country" />
+                    <div class="kv"><span>Resolved</span><b id="locResolved">—</b></div>
+                    <div class="kv"><span>Coords</span><b id="locCoords">—</b></div>
+                </div>
+
+                <div class="card pick">
+                    <div class="card-head"><span>🎮</span><b>Game Server</b></div>
+                    <select id="serverSelect"></select>
+                    <div class="kv"><span>Region</span><b id="svRegion">—</b></div>
+                    <div class="kv"><span>Coords</span><b id="svCoords">—</b></div>
+                </div>
+            </div>
+
+            <div class="cta">
+                <button id="calcBtn" class="btn primary">Calculate Input Lag</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="results hidden">
+        <div class="container res-grid">
+            <div class="card big">
+                <div class="label">Total Input Lag</div>
+                <div class="total" id="totalWrap"><span id="totalMs">0</span><span class="ms">ms</span></div>
+                <div id="tierTag" class="pill">—</div>
+                <p id="tierDesc">—</p>
+            </div>
+            <div class="card">
+                <div class="label">Latency Breakdown</div>
+                <div class="bar"><span>Keyboard</span>
+                    <div>
+                        <div id="bKb"></div>
+                    </div><b id="vKb">0ms</b>
+                </div>
+                <div class="bar"><span>Mouse</span>
+                    <div>
+                        <div id="bMs"></div>
+                    </div><b id="vMs">0ms</b>
+                </div>
+                <div class="bar"><span>Monitor</span>
+                    <div>
+                        <div id="bMn"></div>
+                    </div><b id="vMn">0ms</b>
+                </div>
+                <div class="bar"><span>Network</span>
+                    <div>
+                        <div id="bNt"></div>
+                    </div><b id="vNt">0ms</b>
+                </div>
+                <div class="pvA"><span>Performance vs Average</span><b id="pvA">—</b></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tiers">
+        <div class="container tiers-grid">
+            <div class="tier card">
+                <div class="icon green">🏆</div>
+                <div class="t">Esports Ready</div>
+                <div class="n green">&lt; 15ms</div>
+                <p>Professional-grade responsiveness for competitive esports</p>
+            </div>
+            <div class="tier card">
+                <div class="icon gold">🔰</div>
+                <div class="t">Competitive</div>
+                <div class="n gold">15–30ms</div>
+                <p>Great performance for competitive gaming</p>
+            </div>
+            <div class="tier card">
+                <div class="icon red">🎮</div>
+                <div class="t">Casual Gaming</div>
+                <div class="n red">&gt; 30ms</div>
+                <p>Suitable for casual gaming experiences</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="nav.js" defer></script>
+    <script type="module" src="js/benchmark.js" defer></script>
+</body>
+
+</html>
